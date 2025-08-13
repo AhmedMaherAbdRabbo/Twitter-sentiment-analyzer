@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis - LSTM Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Twitter Sentiment Analysis</h1>
+            <p>LSTM Neural Network Model - Real-time Sentiment Classification</p>
+        </div>
+        
+        <div class="demo-section">
+            <h2>🔍 Try the Model</h2>
+            <div class="input-group">
+                <label for="textInput">Enter your text for sentiment analysis:</label>
+                <textarea 
+                    id="textInput" 
+                    class="text-input" 
+                    placeholder="Type your message here... (e.g., 'I love this new product!', 'This service is terrible', 'It's okay, nothing special')"
+                ></textarea>
+            </div>
+            <button class="btn" onclick="analyzeSentiment()">Analyze Sentiment</button>
+            
+            <div id="resultContainer" class="result-container">
+                <div id="sentimentResult" class="sentiment-result"></div>
+                <div class="confidence-bar">
+                    <div id="confidenceFill" class="confidence-fill"></div>
+                </div>
+                <p id="confidenceText" style="margin-top: 0.5rem; color: #999;"></p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Model Information</h2>
+            <div class="model-info">
+                <div class="info-card">
+                    <h3>Architecture</h3>
+                    <ul>
+                        <li>Bidirectional LSTM layers</li>
+                        <li>Embedding dimension: 128</li>
+                        <li>Two LSTM layers (32, 16 units)</li>
+                        <li>Dense layers with dropout</li>
+                        <li>Softmax output (3 classes)</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Classes</h3>
+                    <ul>
+                        <li><span style="color: #4CAF50;">Positive</span> - Happy, satisfied content</li>
+                        <li><span style="color: #f44336;">Negative</span> - Unhappy, dissatisfied content</li>
+                        <li><span style="color: #ff9800;">Neutral</span> - Balanced, factual content</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
